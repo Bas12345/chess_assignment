@@ -129,7 +129,7 @@ func DrawBoard(bishops []models.Cell, highLightTiles []models.Cell, board []mode
 	currentRow := 0
 
 	// if we dont enter any highlight or bishop data into this function we render an empty board as visual aid
-	if len(bishops) == 0 || len(highLightTiles) == 0 {
+	if len(bishops) == 0 {
 		drawSimpleBoard(board)
 		return
 	}
