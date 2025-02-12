@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"math"
 	"slices"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -81,9 +82,10 @@ func FindSightLine(pieceLocations []models.Cell, board []models.Cell) (bool, []m
 	}
 
 	rows, columns := GetRowsAndColumns()
+	sort.Ints(rows)
 	for _, row := range rows {
-		// skip creating go routines for rows below or equal to startinglocation row
-		if row <= startingLocation.Row {
+		// skip below or equal to startinglocation row
+		if row <= startingLocation.Row || ((attackLocationFoundLeft || attackLocationFoundRight) && row >= attackLocation.Row) {
 			continue
 		}
 
