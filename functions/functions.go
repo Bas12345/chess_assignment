@@ -37,7 +37,7 @@ func FindRowColCells(selectedCells []string) ([]models.Cell, error) {
 			if err != nil {
 				return nil, errors.New("incorrect input: please follow the example text -> A1 B2 C3 etc")
 			}
-			bishops = append(bishops, models.Cell{Row: rowConverted, Column: rowCol[0]})
+			bishops = append(bishops, models.Cell{Row: rowConverted, Column: strings.ToUpper(rowCol[0])})
 		} else {
 			return nil, errors.New("incorrect input: please follow the example text -> A1 B2 C3 etc")
 		}
