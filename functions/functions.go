@@ -128,6 +128,12 @@ func DrawBoard(bishops []models.Cell, highLightTiles []models.Cell, board []mode
 	stringBoard := ""
 	currentRow := 0
 
+	// if we dont enter any highlight or bishop data into this function we render an empty board as visual aid
+	if len(bishops) == 0 || len(highLightTiles) == 0 {
+		drawSimpleBoard(board)
+		return
+	}
+
 	// get both bishops out of the list to simplify logic and readability
 	firstBishopLocation := bishops[0]
 	secondBishopLocation := bishops[1]
@@ -185,4 +191,26 @@ func addCellColor(lastColor *string) string {
 		return blackCell
 	}
 	return ""
+}
+
+func drawSimpleBoard(board []models.Cell) {
+	var stringBoard string
+	currentRow := 0
+	lastColor := "Black"
+	for i, boardCell := range board {
+		if i != 0 && i%8 == 0 {
+			stringBoard = stringBoard + "\n"
+			// switch colors on the end of the lines so next line starts with the same color
+			_ = addCellColor(&lastColor)
+		}
+		if currentRow != boardCell.Row {
+			stringBoard = stringBoard + fmt.Sprintf("%v", boardCell.Row)
+			currentRow = boardCell.Row
+		}
+		stringBoard = stringBoard + addCellColor(&lastColor)
+
+	}
+	fmt.Println(stringBoard)
+	// add legend line at the bottom
+	fmt.Println("X|A|B|C|D|E|F|G|H|")
 }

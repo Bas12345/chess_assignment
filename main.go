@@ -8,6 +8,8 @@ import (
 
 func main() {
 	var firstBishop, secondBishop string
+	board := functions.BuildBoard()
+	functions.DrawBoard(nil, nil, board)
 	fmt.Println("This program determines if two bishops on a chess board can attack eachother. Please enter the chosen location of your bishops by row and column. Input example: A1 or B4")
 	fmt.Println("Enter first bishop location: ")
 	fmt.Scanln(&firstBishop)
@@ -17,7 +19,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	board := functions.BuildBoard()
 	found, highLightTiles, err := functions.FindSightLine(selectedCells, board)
 	if err != nil {
 		log.Fatal(err)
