@@ -15,6 +15,7 @@ func GetRowsAndColumns() ([]int, []string) {
 	columns := []string{"A", "B", "C", "D", "E", "F", "G", "H"}
 	return rows, columns
 }
+
 func BuildBoard() []models.Cell {
 	board := []models.Cell{}
 	rows, columns := GetRowsAndColumns()

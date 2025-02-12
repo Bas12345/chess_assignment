@@ -24,7 +24,6 @@ func main() {
 	}
 	if found {
 		fmt.Println("Bishops can attack eachother.")
-		fmt.Println(highLightTiles)
 		functions.DrawBoard(selectedCells, highLightTiles, board)
 	} else {
 		fmt.Println("Bishops can not attack eachother.")
